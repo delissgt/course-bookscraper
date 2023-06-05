@@ -18,3 +18,5 @@ First Steps
 3. start scrapy project
 
 `scrapy startproject bookscraper`
+
+3.1 after execute this command the directory *bookscraper* will be created
