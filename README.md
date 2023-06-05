@@ -57,3 +57,18 @@ run scrapy shell
 5: `books = response.css('article.product_pod')` # put all books in a diferente variable 
 
 6: `len(books)` # total books in page obtained
+
+```
+# get the name, price and URL for the first book
+
+book = books[0]
+
+# getting title 
+book.css('h3 a::text').get() # 'A light in the ...'
+
+#getting price 
+book.css('.product_price .price_color::text').get() # '&51.77'
+
+#getting link 
+book.css('h3 a').attrib['href']
+```
