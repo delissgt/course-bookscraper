@@ -72,3 +72,6 @@ book.css('.product_price .price_color::text').get() # '&51.77'
 #getting link 
 book.css('h3 a').attrib['href']
 ```
+
+**EXECUTE SPIDER**
+`scrapy crawl bookspider` # bookspider == spider_name
