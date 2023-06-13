@@ -74,4 +74,13 @@ book.css('h3 a').attrib['href']
 ```
 
 **EXECUTE SPIDER**
-`scrapy crawl bookspider` # bookspider == spider_name
+
+* `scrapy crawl bookspider`
+ 
+ bookspider == spider_name
+ 
+ 
+* `scrapy crawl bookspider -O bookdata.csv`
+* `scrapy crawl bookspider -O bookdata.json`
+
+ save data into a file .csv and .json
