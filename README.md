@@ -84,3 +84,37 @@ book.css('h3 a').attrib['href']
 * `scrapy crawl bookspider -O bookdata.json`
 
  save data into a file .csv and .json
+
+
+`scrapy list`
+
+list spiders
+
+
+# Pipelines
+
+use for clean the data.
+For example remove the currency signs
+convert the price from pounds to dollars
+format strings to integers (if you are going to save it into a database that becomes very important)
+converting relative URLs to full URLs
+Validate data, check if price is actually a price or is it sold out, and then you can know put price in price of zero
+Store data instead a file get the data to go directly into a database
+
+NOTE:
+
+remember uncomment or add the next line in **setting.py**
+
+```python
+# Configure item pipelines
+# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+ITEM_PIPELINES = {
+   "bookscraper.pipelines.BookscraperPipeline": 300,
+}
+
+```
+
+
+
+
+
