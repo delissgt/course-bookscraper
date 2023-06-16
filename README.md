@@ -83,8 +83,13 @@ book.css('h3 a').attrib['href']
 * `scrapy crawl bookspider -O bookdata.csv`
 * `scrapy crawl bookspider -O bookdata.json`
 
- save data into a file .csv and .json
+ save data into a file .csv and .json using -O (capital letter) Overwrite
+ 
+ 
+* `scrapy crawl bookspider -o bookdata.csv`
+* `scrapy crawl bookspider -o bookdata.json`
 
+ append data into a file .csv and .json using -o 
 
 `scrapy list`
 
@@ -114,7 +119,48 @@ ITEM_PIPELINES = {
 
 ```
 
+# Saving Data to Files & Databases
+
+In File **setting.py** add the next lines
+
+```python
+FEEDS = {
+   'bookdata.json': {'format': 'json'}
+}
+```
+
+This lines output the data cleaned in a file called *bookdata.json*
+
+So instance use `scrapy crawl bookspider -O bookdata.json` 
+we just need to run the next command
+
+ ```python
+scrapy crawl bookspider
+```
+
+and the file *bookdata.json* will automatically generated 
 
 
+Add next file in *bookspider.py*
+
+```python
+class BookspiderSpider(scrapy.Spider):
+    ...
+    start_urls = ["https://books.toscrape.com"]
+    ...
+
+    custom_settings  = {
+        'FEEDS' : {
+            'bookdata.json': {'format': 'json', 'overwrite': True}
+        }
+    }
+```
+
+This enable overwrite anything you have in *settings* file
+and you can specify it in the spider.
+We need to specify what we want to overwrite.
+If it sees that the feeds are set here it will overwrite what we have in our *settings.py* file.
+This is an easy way that if you want to specify certain settings you can do them here. 
+They don't all have to be in *settings.py* file
 
 
