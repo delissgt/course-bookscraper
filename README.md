@@ -134,6 +134,7 @@ This lines output the data cleaned in a file called *bookdata.json*
 So instance use `scrapy crawl bookspider -O bookdata.json` 
 we just need to run the next command
 
+**RUN SPIDER!!!**
  ```python
 scrapy crawl bookspider
 ```
