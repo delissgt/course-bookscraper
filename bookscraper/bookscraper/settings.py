@@ -28,6 +28,12 @@ ROTATING_PROXY_LIST = [
    '103.113.3.236:4145',
 ]
 
+# VARIABLES FOR PROXY CONFIGURATION
+# PROXY_USER = 'username'
+# PROXY_PASSWORD = 'password'
+# PROXY_ENDPOINT = 'gate.smartproxy.com'
+# PROXY_PORT = '7000'
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "bookscraper (+http://www.yourdomain.com)"
@@ -72,8 +78,11 @@ DOWNLOADER_MIDDLEWARES = {
    "bookscraper.middlewares.BookscraperDownloaderMiddleware": 543,
    # "bookscraper.middlewares.ScrapeOpsFakeUserAgentMiddleware": 400,
    "bookscraper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 400,
-   "rotating_proxies.middlewares.RotatingProxyMiddleware": 610,
-   "rotating_proxies.middlewares.BanDetectionMiddleware": 620,
+
+   # "rotating_proxies.middlewares.RotatingProxyMiddleware": 610,
+   # "rotating_proxies.middlewares.BanDetectionMiddleware": 620,
+
+   # "bookscraper.middlewares.MyProxyMiddleware": 350
 }
 
 # Enable or disable extensions

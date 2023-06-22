@@ -169,6 +169,8 @@ They don't all have to be in *settings.py* file
 
 * Pages for free proxies
 
+[scrapeops.io](https://scrapeops.io/)
+
 [free-proxy-list.net](https://free-proxy-list.net/)
 
 [geonode.com/free-proxy-list](https://geonode.com/free-proxy-list)
@@ -214,3 +216,35 @@ ROTATING_PROXY_LIST = [
 ```
 
 * Other resource [smartproxy](https://smartproxy.com/)
+
+Other options for proxies is use smartproxy and add the next configuration in spider `bookspider` file
+(add meta in yield)
+
+```python
+    def parse(self, response):
+        books = response.css('article.product_pod')
+
+        for book in books:
+            ...
+            ...
+
+            yield response.follow(
+                book_url, 
+                callback=self.parse_book_page
+                meta={"proxy", "http://username:password@gate.smartproxy.com:8080"}
+            )
+        
+        ...
+        ...
+
+        next_page = response.css('li.next a::attr(href)').get()
+        if next_page is not None:
+            ...
+            ...
+
+            yield response.follow(
+                next_page_url, 
+                callback=self.parse,
+                meta={"proxy", "http://username:password@gate.smartproxy.com:8080"}
+            )
+```
