@@ -28,7 +28,7 @@ class BookspiderSpider(scrapy.Spider):
 
     # When the spider starts up run this function and this function run our guess proxy URL
     def start_requests(self):
-        yield scrapy.Request(url=get_proxy_url(self.start_urls[0]), callback=self.parse)
+        yield scrapy.Request(url=self.start_urls[0], callback=self.parse)
 
     def parse(self, response):
         books = response.css('article.product_pod')
@@ -42,7 +42,7 @@ class BookspiderSpider(scrapy.Spider):
                 book_url = 'http://books.toscrape.com/catalogue/' + relative_url
 
             # yield response.follow(book_url, callback=self.parse_book_page)
-            yield scrapy.Request(url=get_proxy_url(book_url), callback=self.parse_book_page)
+            yield scrapy.Request(url=book_url, callback=self.parse_book_page)
 
         #     yield {
         #         'name': book.css('h3 a::text').get(),
@@ -58,7 +58,7 @@ class BookspiderSpider(scrapy.Spider):
                 next_page_url = 'http://books.toscrape.com/catalogue/' + next_page
 
             # yield response.follow(next_page_url, callback=self.parse)
-            yield scrapy.Request(url=get_proxy_url(next_page_url), callback=self.parse)
+            yield scrapy.Request(url=next_page_url, callback=self.parse)
 
 
     def parse_book_page(self, response):

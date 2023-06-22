@@ -17,7 +17,7 @@ FEEDS = {
    'bookdata.json': {'format': 'json'}
 }
 
-SCRAPEOPS_API_KEY = '5591c5dc-56fe-4a6a-bb72-b929f51ee277'
+SCRAPEOPS_API_KEY = 'YOUR_API_HERE'
 SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
 SCRAPEOPS_FAKE_USER_AGENT = True
 SCRAPEOPS_NUM_RESULTS = 5
@@ -33,6 +33,14 @@ ROTATING_PROXY_LIST = [
 # PROXY_PASSWORD = 'password'
 # PROXY_ENDPOINT = 'gate.smartproxy.com'
 # PROXY_PORT = '7000'
+
+
+# SCRAPEOPS_API_KEY = 'YOUR_API_HERE'
+SCRAPEOPS_PROXY_ENABLED = True
+# Add middleware too
+
+#send all the trafic via US IP address
+# SCRAPEOPS_PROXY_SETTINGS = {'country': 'us'}
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -83,6 +91,8 @@ DOWNLOADER_MIDDLEWARES = {
    # "rotating_proxies.middlewares.BanDetectionMiddleware": 620,
 
    # "bookscraper.middlewares.MyProxyMiddleware": 350
+
+   'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725
 }
 
 # Enable or disable extensions

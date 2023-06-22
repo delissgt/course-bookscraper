@@ -215,7 +215,9 @@ ROTATING_PROXY_LIST = [
 # ROTATING_PROXY_LIST = "/my/path/proxies.txt"
 ```
 
-* Other resource [smartproxy](https://smartproxy.com/)
+* **Other resource**
+
+[smartproxy](https://smartproxy.com/)
 
 Other options for proxies is use smartproxy and add the next configuration in spider `bookspider` file
 (add meta in yield)
@@ -247,4 +249,10 @@ Other options for proxies is use smartproxy and add the next configuration in sp
                 callback=self.parse,
                 meta={"proxy", "http://username:password@gate.smartproxy.com:8080"}
             )
+```
+
+* **Other resource python package** scrapeops-scrapy-proxy-sdk
+
+```python
+pip install scrapeops-scrapy-proxy-sdk
 ```
