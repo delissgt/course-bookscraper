@@ -164,3 +164,53 @@ This is an easy way that if you want to specify certain settings you can do them
 They don't all have to be in *settings.py* file
 
 
+---
+# Rotating Proxies and Proxy APIs
+
+* Pages for free proxies
+
+[free-proxy-list.net](https://free-proxy-list.net/)
+
+[geonode.com/free-proxy-list](https://geonode.com/free-proxy-list)
+
+* Python package for working proxies
+
+[scrapy-rotating-proxies](https://github.com/TeamHG-Memex/scrapy-rotating-proxies)
+
+
+**Why is used proxies?**
+
+If we change the user agent every time when we're sending the request that's fine but
+if we changing the user agents every time but we still have the same IP address then 
+the site that we're scraping is very likely to know that we are the same machine that
+is requesting their data every time so they're very likely to block us straight away.
+
+So that's why changing our IP address as well as our user agent and headers is  very
+important so just the user agent and headers might work if it's not very sophisticated 
+type of web site that you're trying to scrape but if you're going to anything that's 
+complex at all you will need to rotate your IP address and that's where proxies come 
+into play.
+
+* Install package
+```python
+# install scrapy-rotating-proxies
+
+pip install scrapy-rotating-proxies
+``` 
+
+* Add list proxies in settings
+
+```python
+ROTATING_PROXY_LIST = [
+   '121.226.202.150:1080',
+   '75.111.123.167:1888',
+   '103.113.3.236:4145',
+]
+
+
+# Other way is passing the list from a file
+
+# ROTATING_PROXY_LIST = "/my/path/proxies.txt"
+```
+
+* Other resource [smartproxy](https://smartproxy.com/)

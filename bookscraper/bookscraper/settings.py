@@ -17,10 +17,17 @@ FEEDS = {
    'bookdata.json': {'format': 'json'}
 }
 
-SCRAPEOPS_API_KEY = 'xxx-xxx-xxx-xxx-xxx'
+SCRAPEOPS_API_KEY = '5591c5dc-56fe-4a6a-bb72-b929f51ee277'
 SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
 SCRAPEOPS_FAKE_USER_AGENT = True
 SCRAPEOPS_NUM_RESULTS = 5
+
+ROTATING_PROXY_LIST = [
+   '121.226.202.150:1080',
+   '75.111.123.167:1888',
+   '103.113.3.236:4145',
+]
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "bookscraper (+http://www.yourdomain.com)"
@@ -62,9 +69,11 @@ ROBOTSTXT_OBEY = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   # "bookscraper.middlewares.BookscraperDownloaderMiddleware": 543,
+   "bookscraper.middlewares.BookscraperDownloaderMiddleware": 543,
    # "bookscraper.middlewares.ScrapeOpsFakeUserAgentMiddleware": 400,
    "bookscraper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 400,
+   "rotating_proxies.middlewares.RotatingProxyMiddleware": 610,
+   "rotating_proxies.middlewares.BanDetectionMiddleware": 620,
 }
 
 # Enable or disable extensions
